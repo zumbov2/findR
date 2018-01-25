@@ -13,8 +13,12 @@ Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/ci
 findR::findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams")
 ```
 
+![](https://github.com/zumbov2/findR/blob/master/report1.png)
 
+And the new folder looks like this:
 
+![](https://github.com/zumbov2/findR/blob/master/folder.png)
 
+The process took roughly 20 seconds.
 
 ## Gimmickry
