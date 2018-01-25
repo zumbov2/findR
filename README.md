@@ -14,13 +14,13 @@ findR::findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams
 ```
 After roughly 20 seconds:
 
-![](https://github.com/zumbov2/findR/blob/master/report1.png)
+![](https://github.com/zumbov2/findR/blob/master/img/report1.png)
 
 And the new folder looks like this:
 
-![](https://github.com/zumbov2/findR/blob/master/folder.png)
+![](https://github.com/zumbov2/findR/blob/master/img/folder.png)
 
-## Gimmickry
+## Some gimmickry
 What `ggplot2` type am I? Let's find out with `findR`.
 
 ```
@@ -50,6 +50,6 @@ ggsave("type.png", dpi = 500)
 
 Tadaaa...
 
-![](https://github.com/zumbov2/findR/blob/master/type.png)
+![](https://github.com/zumbov2/findR/blob/master/img/type.png)
  
  Punkt. Aus. Ende.
