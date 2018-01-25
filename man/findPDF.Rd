@@ -4,8 +4,8 @@
 \alias{findPDF}
 \title{Find PDF files by content with pattern matching}
 \usage{
-findPDF(path = ".", pattern = "hello world", lowercase = TRUE,
-  copy = TRUE, folder = "findPDF", overwrite = TRUE)
+findPDF(path = ".", pattern = "hello world", lowercase = FALSE,
+  copy = FALSE, folder = "findPDF", overwrite = TRUE)
 }
 \arguments{
 \item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
@@ -22,9 +22,14 @@ findPDF(path = ".", pattern = "hello world", lowercase = TRUE,
 }
 \description{
 \code{findPDF} scans all directories and subdirectories of a given path for PDF files with content
-that matches a specific pattern and copies the hits to a folder.
+that matches a specific pattern. Hits can be copied to a new folder.
 }
 \examples{
-# Find all PDF files that contain the name hanna:
-findPDF(pattern = "hanna")
+\dontrun{
+# Find all PDF files in folder 'my_PDFs' citing R:
+findPDF(path = "my_PDFs", pattern = "R Core Team")
+
+# Copy PDF files with matching content to a new folder:
+findPDF(path = "my_PDFs", pattern = "R Core Team", copy = T, folder = "my_R_citing_PDFs"))
+}
 }

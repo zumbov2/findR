@@ -1,7 +1,7 @@
 #' Find R Markdown files by content with pattern matching
 #'
 #' \code{findRmd} scans all directories and subdirectories of a given path for R Markdown files with content
-#'     that matches a specific pattern and copies the hits to a folder.
+#'     that matches a specific pattern. Hits can be copied to a new folder.
 #'
 #' @param pattern a pattern (regular expression) to search for.
 #' @param lowercase a logical value. If \code{TRUE}, all Rmd file content is converted to lower case.
@@ -10,11 +10,16 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#' # Find all R Markdown files with a ggplot bar chart:
-#' findRmd(pattern = "geom_bar")
+#'\dontrun{
+#'# Find all R markdown files in folder 'my_rmd_files' containing a ggplot bar chart:
+#'findRmd(path = "my_rmd_files", pattern = "geom_bar")
+#'
+#'# Copy R markdown files with matching content to a new folder:
+#'findRmd(path = "my_rmd_files", pattern = "geom_bar", copy = T, folder = "my_bar_rmd_files")
+#'}
 #' @export
 
-findRmd <- function(path = ".", pattern = "hello world", lowercase = TRUE, copy = TRUE, folder = "findRmd", overwrite = TRUE) {
+findRmd <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findRmd", overwrite = TRUE) {
 
   # Get all subdirectories
   drs <- list.dirs(path = path)

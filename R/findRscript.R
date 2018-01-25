@@ -1,7 +1,7 @@
 #' Find R scripts by content with pattern matching
 #'
 #' \code{findRscript} scans all directories and subdirectories of a given path for R scripts with content
-#'     that matches a specific pattern and copies the hits to a folder.
+#'     that matches a specific pattern. Hits can be copied to a new folder.
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
@@ -11,11 +11,16 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#' # Find all R scripts with a ggplot bar chart:
-#' findRscript(pattern = "geom_bar")
+#'\dontrun{
+#'# Find all R scripts in folder 'my_Rscripts' containing a ggplot bar chart:
+#'findRscript(path = "my_Rscripts", pattern = "geom_bar")
+#'
+#'# Copy scripts with matching content to a new folder:
+#'findRscript(path = "my_Rscripts", pattern = "geom_bar", copy = T, folder = "my_bar_Rscripts")
+#'}
 #' @export
 
-findRscript <- function(path = ".", pattern = "hello world", lowercase = TRUE, comments = TRUE, copy = TRUE, folder = "findRscript", overwrite = TRUE) {
+findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, comments = TRUE, copy = FALSE, folder = "findRscript", overwrite = TRUE) {
 
   # Get all subdirectories
   drs <- list.dirs(path = path)

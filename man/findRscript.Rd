@@ -4,8 +4,8 @@
 \alias{findRscript}
 \title{Find R scripts by content with pattern matching}
 \usage{
-findRscript(path = ".", pattern = "hello world", lowercase = TRUE,
-  comments = TRUE, copy = TRUE, folder = "findRscript",
+findRscript(path = ".", pattern = "hello world", lowercase = FALSE,
+  comments = TRUE, copy = FALSE, folder = "findRscript",
   overwrite = TRUE)
 }
 \arguments{
@@ -25,9 +25,14 @@ findRscript(path = ".", pattern = "hello world", lowercase = TRUE,
 }
 \description{
 \code{findRscript} scans all directories and subdirectories of a given path for R scripts with content
-    that matches a specific pattern and copies the hits to a folder.
+    that matches a specific pattern. Hits can be copied to a new folder.
 }
 \examples{
-# Find all R scripts with a ggplot bar chart:
-findRscript(pattern = "geom_bar")
+\dontrun{
+# Find all R scripts in folder 'my_Rscripts' containing a ggplot bar chart:
+findRscript(path = "my_Rscripts", pattern = "geom_bar")
+
+# Copy scripts with matching content to a new folder:
+findRscript(path = "my_Rscripts", pattern = "geom_bar", copy = T, folder = "my_bar_Rscripts")
+}
 }

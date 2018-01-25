@@ -1,7 +1,7 @@
 #' Find PDF files by content with pattern matching
 #'
 #' \code{findPDF} scans all directories and subdirectories of a given path for PDF files with content
-#' that matches a specific pattern and copies the hits to a folder.
+#' that matches a specific pattern. Hits can be copied to a new folder.
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
@@ -10,11 +10,16 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#' # Find all PDF files that contain the name hanna:
-#' findPDF(pattern = "hanna")
+#'\dontrun{
+#'# Find all PDF files in folder 'my_PDFs' citing R:
+#'findPDF(path = "my_PDFs", pattern = "R Core Team")
+#'
+#'# Copy PDF files with matching content to a new folder:
+#'findPDF(path = "my_PDFs", pattern = "R Core Team", copy = T, folder = "my_R_citing_PDFs"))
+#'}
 #' @export
 
-findPDF <- function(path = ".", pattern = "hello world", lowercase = TRUE, copy = TRUE, folder = "findPDF", overwrite = TRUE) {
+findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findPDF", overwrite = TRUE) {
 
   # Get all subdirectories
   drs <- list.dirs(path = path)

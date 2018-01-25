@@ -1,11 +1,11 @@
 Package: findR
 Type: Package
-Title: Find R Scripts, R Markdown And PDF Files By Content With Pattern
+Title: Find R Scripts, R Markdown and PDF Files by Content with Pattern
         Matching
 Version: 0.1.0
 Authors@R: person("David", "Zumbach", role = c("aut", "cre"), email = "david.zumbach@gfzb.ch")
 Description: Scans all subdirectories of a path for R scripts, R Markdown or PDF files with content that
-    matches a specific pattern and copies the hits to a folder.
+    matches a specific pattern. Hits can be copied to a new folder.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -13,6 +13,6 @@ RoxygenNote: 6.0.1
 Imports: pdftools
 BugReports: https://github.com/zumbov2/findR/issues
 NeedsCompilation: no
-Packaged: 2018-01-25 00:05:55 UTC; David Zumbach
+Packaged: 2018-01-25 22:42:51 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>
