@@ -1,5 +1,5 @@
 # findR
-Find R Scripts, R Markdown and PDF files by content with pattern matching.
+The `findR` functions `findRscript`, `findRmd`, and `findPDF` scan all directories and subdirectories of a given path for R scripts, R Markdown and PDF files with content that matches a specific pattern. The hits can be copied to a folder.
 
 ## Installation
 ```
@@ -7,16 +7,17 @@ install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
 ## Example
-Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when!
+Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to my R directory.
 
 ```
-findR::findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams")
+library(findR)
+findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams")
 ```
 After roughly 20 seconds:
 
 ![](https://github.com/zumbov2/findR/blob/master/img/report1.png)
 
-And the new folder looks like this:
+The new folder looks like this:
 
 ![](https://github.com/zumbov2/findR/blob/master/img/folder.png)
 
@@ -24,19 +25,21 @@ And the new folder looks like this:
 What `ggplot2` type am I? Let's find out with `findR`.
 
 ```
-bar <- findR::findRscript(pattern = "geom_bar", comments = F, copy = F)
-line <- findR::findRscript(pattern = "geom_line", comments = F, copy = F)
-point <- findR::findRscript(pattern = "geom_point", comments = F, copy = F)
-histogram <- findR::findRscript(pattern = "geom_histogram", comments = F, copy = F)
+geom_types <- c("geom_bar", "geom_line", "geom_point", "geom_histogram")
+hits <- vector(mode = "numeric", length = 4)
+
+for (i in 1:length(geom_types)) {
+  
+  hits[i] <- nrow(findRscript(pattern = geom_types[i], comments = F, copy = F))
+  
+}
 ```
 
 The tension is getting higher.
 
 ```
 library(tidyverse)
-
-ggstats <- data_frame(type = c("bar", "line", "point", "histogram"),
-                      freq = c(nrow(bar), nrow(line), nrow(point), nrow(histogram)))
+ggstats <- data_frame(type = geom_types, freq = hits)
 
 ggstats %>%
   mutate(type = factor(type, levels = type[order(freq, decreasing = T)])) %>%
