@@ -10,12 +10,8 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#' \dontrun{
-#'
 #' # Find all PDF files that contain the name hanna:
 #' findPDF(pattern = "hanna")
-#'
-#' }
 #' @export
 
 findPDF <- function(path = ".", pattern = "hello world", lowercase = TRUE, copy = TRUE, folder = "findPDF", overwrite = TRUE) {
@@ -23,58 +19,67 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = TRUE, copy 
   # Get all subdirectories
   drs <- list.dirs(path = path)
 
-  # Get all R-Scripts in subdirectories
+  # Get all PDF files in subdirectories
   fls <- list.files(drs, pattern = "\\.pdf|\\.PDF", full.names = T)
 
-  # Scan R scripts for pattern
-  hits <- NULL
+  if (length(fls) > 0) {
 
-  for (i in 1:length(fls)) {
+    # Scan all PDF files for pattern
+    hits <- NULL
 
-    if (lowercase == TRUE) {
+    for (i in 1:length(fls)) {
 
-      a <- try(suppressMessages(tolower(pdftools::pdf_text(fls[i]))), silent = TRUE)
+      if (lowercase == TRUE) {
 
-    } else {
+        a <- try(suppressMessages(tolower(pdftools::pdf_text(fls[i]))), silent = TRUE)
 
-      a <- try(suppressMessages(pdftools::pdf_text(fls[i])), silent = TRUE)
+      } else {
 
-    }
+        a <- try(suppressMessages(pdftools::pdf_text(fls[i])), silent = TRUE)
 
-    if (length(grep(pattern, a)) > 0) {
+      }
 
-      path_to_file <- fls[i]
-      page <- which(grepl(pattern, a))
-      hit <- cbind.data.frame(path_to_file, page)
-      hits <- rbind.data.frame(hits, hit)
+      if (length(grep(pattern, a)) > 0) {
 
-      rm(hit)
+        path_to_file <- fls[i]
+        page <- which(grepl(pattern, a))
+        hit <- cbind.data.frame(path_to_file, page)
+        hits <- rbind.data.frame(hits, hit)
 
-    }
-
-  }
-
-  # Copy scripts to new folder
-  if (copy == TRUE) {
-
-    dir.create(folder)
-
-    if (!is.null(hits)) {
-
-      for (i in 1:nrow(hits)) {
-
-        file.copy(hits$path_to_file[i], folder, overwrite = overwrite)
+        rm(hit)
 
       }
 
     }
+
+    # Copy scripts to folder
+    if (copy == TRUE) {
+
+      dir.create(folder)
+
+      if (!is.null(hits)) {
+
+        for (i in 1:nrow(hits)) {
+
+          file.copy(hits$path_to_file[i], folder, overwrite = overwrite)
+
+        }
+
+      }
+    }
+
+    # Messages 1
+    message(paste0("Number of directories scanned: ", length(drs)))
+    message(paste0("Number of PDF files scanned: ", length(fls)))
+    message(paste0("Number of PDF files with matches: ", length(unique(hits$path_to_file))))
+    message(paste0("Total number of matches: ", nrow(hits)))
+    hits
+
+  } else {
+
+    # Messages 2
+    message(paste0("Number of directories scanned: ", length(drs)))
+    message(paste0("No PDF files found!"))
+
   }
-
-  # Print information
-  message(paste0("Number of directories scanned: ", length(drs)))
-  message(paste0("Number of PDF files scanned: ", length(fls)))
-  message(paste0("Number of PDF files with matches: ", length(unique(hits$path_to_file))))
-  message(paste0("Total number of matches: ", nrow(hits)))
-  hits
-
 }

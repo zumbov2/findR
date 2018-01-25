@@ -28,10 +28,6 @@ findRscript(path = ".", pattern = "hello world", lowercase = TRUE,
     that matches a specific pattern and copies the hits to a folder.
 }
 \examples{
-\dontrun{
-
 # Find all R scripts with a ggplot bar chart:
 findRscript(pattern = "geom_bar")
-
-}
 }

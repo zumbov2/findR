@@ -25,10 +25,6 @@ findPDF(path = ".", pattern = "hello world", lowercase = TRUE,
 that matches a specific pattern and copies the hits to a folder.
 }
 \examples{
-\dontrun{
-
 # Find all PDF files that contain the name hanna:
 findPDF(pattern = "hanna")
-
-}
 }

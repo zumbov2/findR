@@ -11,12 +11,8 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#' \dontrun{
-#'
 #' # Find all R scripts with a ggplot bar chart:
 #' findRscript(pattern = "geom_bar")
-#'
-#' }
 #' @export
 
 findRscript <- function(path = ".", pattern = "hello world", lowercase = TRUE, comments = TRUE, copy = TRUE, folder = "findRscript", overwrite = TRUE) {
@@ -24,68 +20,77 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = TRUE, c
   # Get all subdirectories
   drs <- list.dirs(path = path)
 
-  # Get all R-Scripts in subdirectories
+  # Get all R scripts in subdirectories
   fls <- list.files(drs, pattern = "\\.r$|\\.R$", full.names = T)
 
-  # Scan R scripts for pattern
-  hits <- NULL
+  if (length(fls) > 0) {
 
-  for (i in 1:length(fls)) {
+    # Scan R scripts for pattern
+    hits <- NULL
 
-    if (lowercase == TRUE) {
+    for (i in 1:length(fls)) {
 
-      a <- tolower(readLines(fls[i], warn = F))
+      if (lowercase == TRUE) {
 
-    } else {
+        a <- tolower(readLines(fls[i], warn = F))
 
-      a <- readLines(fls[i], warn = F)
+      } else {
 
-    }
+        a <- readLines(fls[i], warn = F)
 
-    if (comments == FALSE) {
+      }
 
-      b <- gsub(" ", "", a)
-      b <- substr(b, 0, 1)
-      a[b == "#"] <- ""
+      if (comments == FALSE) {
 
-    }
+        b <- gsub(" ", "", a)
+        b <- substr(b, 0, 1)
+        a[b == "#"] <- ""
 
-    if (length(grep(pattern, a)) > 0) {
+      }
 
-      path_to_file <- fls[i]
-      line <- which(grepl(pattern, a))
-      hit <- cbind.data.frame(path_to_file, line)
-      hits <- rbind.data.frame(hits, hit)
+      if (length(grep(pattern, a)) > 0) {
 
-      rm(hit)
+        path_to_file <- fls[i]
+        line <- which(grepl(pattern, a))
+        hit <- cbind.data.frame(path_to_file, line)
+        hits <- rbind.data.frame(hits, hit)
 
-    }
-
-  }
-
-  # Copy scripts to new folder
-  if (copy == TRUE) {
-
-    dir.create(folder)
-
-    if (!is.null(hits)) {
-
-      for (i in 1:nrow(hits)) {
-
-        file.copy(hits$path_to_file[i], folder, overwrite = overwrite, copy.date = TRUE)
+        rm(hit)
 
       }
 
     }
 
+    # Copy scripts to folder
+    if (copy == TRUE) {
+
+      dir.create(folder)
+
+      if (!is.null(hits)) {
+
+        for (i in 1:nrow(hits)) {
+
+          file.copy(hits$path_to_file[i], folder, overwrite = overwrite, copy.date = TRUE)
+
+        }
+
+      }
+
+    }
+
+    # Messages 1
+    message(paste0("Number of directories scanned: ", length(drs)))
+    message(paste0("Number of R scripts scanned: ", length(fls)))
+    message(paste0("Number of R files with matches: ", length(unique(hits$path_to_file))))
+    message(paste0("Total number of matches: ", nrow(hits)))
+    hits
+
+  } else {
+
+    # Messages 2
+    message(paste0("Number of directories scanned: ", length(drs)))
+    message(paste0("No R scripts found!"))
+
   }
-
-  # Print information
-  message(paste0("Number of directories scanned: ", length(drs)))
-  message(paste0("Number of R scripts scanned: ", length(fls)))
-  message(paste0("Number of R files with matches: ", length(unique(hits$path_to_file))))
-  message(paste0("Total number of matches: ", nrow(hits)))
-  hits
-
 
 }

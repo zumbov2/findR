@@ -25,10 +25,6 @@ findRmd(path = ".", pattern = "hello world", lowercase = TRUE,
     that matches a specific pattern and copies the hits to a folder.
 }
 \examples{
-\dontrun{
-
 # Find all R Markdown files with a ggplot bar chart:
 findRmd(pattern = "geom_bar")
-
-}
 }
