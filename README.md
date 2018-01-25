@@ -1,9 +1,20 @@
 # findR
-I've used this function before, but I can't remember where or when! `findR` helps you find your most valuable R scripts and R Markdown files. 
+Find R Scripts, R Markdown and PDF files by content with pattern matching.
 
-# Installation
+## Installation
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
-# Installation
+## Example
+Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when!
+
+```
+findR::findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams")
+```
+
+
+
+
+
+## Gimmickry
