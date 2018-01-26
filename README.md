@@ -7,12 +7,12 @@ The `findR` functions `findRscript`, `findRmd`, and `findPDF` scan all directori
 install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
-## Example
+## Example `findRscript`
 Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to my R directory.
 
 ```
 library(findR)
-findRscript(pattern = "circlize", comments = F, folder = "myChordDiagrams")
+findRscript(pattern = "circlize", comments = F, copy = T, folder = "myChordDiagrams")
 ```
 After roughly 20 seconds:
 
@@ -21,6 +21,21 @@ After roughly 20 seconds:
 The new folder looks like this:
 
 ![](https://github.com/zumbov2/findR/blob/master/img/folder.png)
+
+## Example `findPDF`
+Too many papers to read?
+
+![](https://github.com/zumbov2/findR/blob/master/img/f2.png)
+
+`findPDF` helps you focus!
+
+```
+findPDF(path = "2017/machine_learning", pattern = "tensorflow",
+        lowercase = T, copy = T, folder = "2017/tensorflow")
+```
+15 seconds later and you've got your new reading list:
+
+![](https://github.com/zumbov2/findR/blob/master/img/f3.png)
 
 ## Some gimmickry
 What `ggplot2` type am I? Let's find out with `findR`.
@@ -31,7 +46,7 @@ hits <- vector(mode = "numeric", length = 4)
 
 for (i in 1:length(geom_types)) {
   
-  hits[i] <- nrow(findRscript(pattern = geom_types[i], comments = F, copy = F))
+  hits[i] <- nrow(findRscript(pattern = geom_types[i], comments = F))
   
 }
 ```
