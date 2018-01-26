@@ -8,7 +8,7 @@ install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
 ## Example `findRscript`
-Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to my R directory.
+Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to the main directory of my R projects.
 
 ```
 library(findR)
