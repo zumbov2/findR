@@ -14,15 +14,15 @@ findRmd(path = ".", pattern = "hello world", lowercase = FALSE,
 
 \item{lowercase}{a logical value. If \code{TRUE}, Rmd file content is converted to lowercase before pattern matching.}
 
-\item{copy}{a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.}
+\item{copy}{a logical value. If \code{TRUE}, all matching R Markdown files are copied to \code{folder}.}
 
-\item{folder}{a character vector, path or name of new folder to copy matching R scripts to.}
+\item{folder}{a character vector, path or name of new folder to copy matching R Markdown files to.}
 
 \item{overwrite}{a logical value. If \code{TRUE}, existing destination files are overwritten.}
 }
 \description{
-\code{findRmd} scans all directories and subdirectories of a given path for R Markdown files with content
-    that matches a specific pattern. Hits can be copied to a new folder.
+\code{findRmd} scans all directories and subdirectories of a given path for R Markdown files (.Rmd) containing
+    a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
 \dontrun{

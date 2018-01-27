@@ -1,13 +1,13 @@
 #' Find R Markdown files by content with pattern matching
 #'
-#' \code{findRmd} scans all directories and subdirectories of a given path for R Markdown files with content
-#'     that matches a specific pattern. Hits can be copied to a new folder.
+#' \code{findRmd} scans all directories and subdirectories of a given path for R Markdown files (.Rmd) containing
+#'     a specific pattern.  Hits can be copied to a new folder.
 #'
 #' @param pattern a pattern (regular expression) to search for.
 #' @param lowercase a logical value. If \code{TRUE}, Rmd file content is converted to lowercase before pattern matching.
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
-#' @param copy a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.
-#' @param folder a character vector, path or name of new folder to copy matching R scripts to.
+#' @param copy a logical value. If \code{TRUE}, all matching R Markdown files are copied to \code{folder}.
+#' @param folder a character vector, path or name of new folder to copy matching R Markdown files to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{

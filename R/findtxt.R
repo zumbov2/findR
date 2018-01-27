@@ -1,21 +1,21 @@
 #' Find text files by content with pattern matching
 #'
-#' \code{findtxt} scans all directories and subdirectories of a given path for text files with content
-#'     that matches a specific pattern. Hits can be copied to a new folder.
+#' \code{findtxt} scans all directories and subdirectories of a given path for text files (.txt) containing
+#'     a specific pattern.  Hits can be copied to a new folder.
 #'
 #' @param pattern a pattern (regular expression) to search for.
 #' @param lowercase a logical value. If \code{TRUE}, text file content is converted to lowercase before pattern matching.
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
-#' @param copy a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.
-#' @param folder a character vector, path or name of new folder to copy matching R scripts to.
+#' @param copy a logical value. If \code{TRUE}, all matching text files are copied to \code{folder}.
+#' @param folder a character vector, path or name of new folder to copy matching text files to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{
 #'# Find all of your text files containing the word greenhouse
-#'findRscript(path = "my_files", pattern = "greenhouse")
+#'findtxt(path = "my_files", pattern = "greenhouse")
 #'
 #'# Save the hits to a new folder
-#'findRscript(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
+#'findtxt(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
 #'}
 #'\dontshow{
 #' # Find all text files in the package folder that contain the name Einstein

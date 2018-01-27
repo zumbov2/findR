@@ -1,21 +1,21 @@
 #' Find PDF files by content with pattern matching
 #'
-#' \code{findPDF} scans all directories and subdirectories of a given path for PDF files with content
-#' that matches a specific pattern. Hits can be copied to a new folder.
+#' \code{findPDF} scans all directories and subdirectories of a given path for PDF files (.pdf) containing
+#'     a specific pattern.  Hits can be copied to a new folder.
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
 #' @param lowercase a logical value. If \code{TRUE}, PDF file content is converted to lowercase before pattern matching.
 #' @param copy a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.
-#' @param folder a character vector, path or name of new folder to copy matching R scripts to.
+#' @param folder a character vector, path or name of new folder to copy matching PDF files scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{
 #'# Find all of your PDF files containing the word TensorFlow
-#'findRmd(path = "my_files", pattern = "TensorFlow")
+#'findPDF(path = "my_files", pattern = "TensorFlow")
 #'
 #'# Save the hits to a new folder
-#'findRmd(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
+#'findPDF(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
 #'}
 #'\dontshow{
 #' # Find all PDF files in the package folder that contain the name Hanna

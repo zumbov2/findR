@@ -1,7 +1,7 @@
 #' Find R scripts by content with pattern matching
 #'
-#' \code{findRscript} scans all directories and subdirectories of a given path for R scripts with content
-#'     that matches a specific pattern. Hits can be copied to a new folder.
+#' \code{findRscript} scans all directories and subdirectories of a given path for R scripts (.R) containing
+#'     a specific pattern.  Hits can be copied to a new folder.
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
@@ -12,7 +12,7 @@
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{
-#'# Find all of your Rscripts with a ggplot2 bar chart
+#'# Find all of your R scripts containing a ggplot2 bar chart
 #'findRscript(path = "my_files", pattern = "geom_bar")
 #'
 #'# Save the hits to a new folder

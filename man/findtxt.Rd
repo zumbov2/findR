@@ -14,23 +14,23 @@ findtxt(path = ".", pattern = "hello world", lowercase = FALSE,
 
 \item{lowercase}{a logical value. If \code{TRUE}, text file content is converted to lowercase before pattern matching.}
 
-\item{copy}{a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.}
+\item{copy}{a logical value. If \code{TRUE}, all matching text files are copied to \code{folder}.}
 
-\item{folder}{a character vector, path or name of new folder to copy matching R scripts to.}
+\item{folder}{a character vector, path or name of new folder to copy matching text files to.}
 
 \item{overwrite}{a logical value. If \code{TRUE}, existing destination files are overwritten.}
 }
 \description{
-\code{findtxt} scans all directories and subdirectories of a given path for text files with content
-    that matches a specific pattern. Hits can be copied to a new folder.
+\code{findtxt} scans all directories and subdirectories of a given path for text files (.txt) containing
+    a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
 \dontrun{
 # Find all of your text files containing the word greenhouse
-findRscript(path = "my_files", pattern = "greenhouse")
+findtxt(path = "my_files", pattern = "greenhouse")
 
 # Save the hits to a new folder
-findRscript(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
+findtxt(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
 }
 \dontshow{
 # Find all text files in the package folder that contain the name Einstein
