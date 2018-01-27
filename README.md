@@ -1,6 +1,6 @@
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 # findR
-The `findR` functions `findRscript`, `findRmd`, and `findPDF` scan all directories and subdirectories of a given path for R scripts, R Markdown and PDF files with content that matches a specific pattern. The hits can be copied to a folder.
+The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan all directories and subdirectories of a given path for R scripts, R Markdown, PDF and text files with content that matches a specific pattern. The hits can be copied to a folder.
 
 ## Installation
 ```
