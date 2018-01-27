@@ -13,7 +13,7 @@ findRscript(path = ".", pattern = "hello world", lowercase = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{lowercase}{a logical value. If \code{TRUE}, all R script content is converted to lower case.}
+\item{lowercase}{a logical value. If \code{TRUE}, R script content is converted to lowercase before pattern matching.}
 
 \item{comments}{a logical value. If \code{FALSE}, comments (lines starting with #) are excluded from pattern matching.}
 
@@ -29,10 +29,18 @@ findRscript(path = ".", pattern = "hello world", lowercase = FALSE,
 }
 \examples{
 \dontrun{
-# Find all R scripts in folder 'my_Rscripts' containing a ggplot bar chart:
-findRscript(path = "my_Rscripts", pattern = "geom_bar")
+# Find all of your Rscripts with a ggplot2 bar chart
+findRscript(path = "my_files", pattern = "geom_bar")
 
-# Copy scripts with matching content to a new folder:
-findRscript(path = "my_Rscripts", pattern = "geom_bar", copy = T, folder = "my_bar_Rscripts")
+# Save the hits to a new folder
+findRscript(path = "my_files", pattern = "geom_bar", copy = TRUE, folder = "Rscripts_geom_bar")
+}
+\dontshow{
+# Find all Rscripts in the package folder that use the circlize package
+findRscript(path = system.file(package = "findR"), pattern = "circlize")
+
+# Copy the hits to a new folder
+findRscript(path = system.file(package = "findR"), pattern = "circlize", copy = TRUE, folder = file.path(tempdir(), "r1"))
+list.files(file.path(tempdir(), "r1"))
 }
 }

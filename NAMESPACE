@@ -3,3 +3,4 @@
 export(findPDF)
 export(findRmd)
 export(findRscript)
+export(findtxt)

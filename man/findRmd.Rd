@@ -12,7 +12,7 @@ findRmd(path = ".", pattern = "hello world", lowercase = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{lowercase}{a logical value. If \code{TRUE}, all Rmd file content is converted to lower case.}
+\item{lowercase}{a logical value. If \code{TRUE}, Rmd file content is converted to lowercase before pattern matching.}
 
 \item{copy}{a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.}
 
@@ -26,10 +26,18 @@ findRmd(path = ".", pattern = "hello world", lowercase = FALSE,
 }
 \examples{
 \dontrun{
-# Find all R markdown files in folder 'my_rmd_files' containing a ggplot bar chart:
-findRmd(path = "my_rmd_files", pattern = "geom_bar")
+# Find all of your R Markdown files with a ggplot2 scatterplot
+findRmd(path = "my_files", pattern = "geom_point")
 
-# Copy R markdown files with matching content to a new folder:
-findRmd(path = "my_rmd_files", pattern = "geom_bar", copy = T, folder = "my_bar_rmd_files")
+# Save the hits to a new folder
+findRmd(path = "my_files", pattern = "geom_point", copy = TRUE, folder = "Rmd_scatterplot")
+}
+\dontshow{
+# Find all R Markdown files in the package folder that contain a ggplot bar chart
+findRmd(path = system.file(package = "findR"), pattern = "geom_bar")
+
+# Copy the hits to a new folder
+findRmd(path = system.file(package = "findR"), pattern = "geom_bar", copy = TRUE, folder = file.path(tempdir(), "r2"))
+list.files(file.path(tempdir(), "r2"))
 }
 }

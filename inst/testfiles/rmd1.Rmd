@@ -1,0 +1,13 @@
+---
+title: "rmd1"
+author: "test"
+date: "27 Januar 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+ ggplot(aes(typ, anteil, fill = sprache, color = sprache)) + 
+  geom_bar(stat = "identity", width = 0.7)
+
+```

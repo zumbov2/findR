@@ -1,0 +1,13 @@
+---
+title: "rmd2"
+author: "test"
+date: "27 Januar 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+p <- ggplot(mtcars, aes(wt, mpg))
+p + geom_point()
+
+```

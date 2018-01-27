@@ -1,0 +1,19 @@
+---
+title: "rmd4"
+author: "test"
+date: "27 Januar 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+p <- ggplot(mtcars, aes(mpg, wt, shape = factor(cyl)))
+p + geom_point(aes(colour = factor(cyl)), size = 4) +
+  geom_point(colour = "grey90", size = 1.5)
+
+# counts (or sums of weights)
+g <- ggplot(mpg, aes(class))
+# Number of cars in each class:
+g + geom_bar()
+
+```

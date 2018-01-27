@@ -13,6 +13,6 @@ RoxygenNote: 6.0.1
 Imports: pdftools
 BugReports: https://github.com/zumbov2/findR/issues
 NeedsCompilation: no
-Packaged: 2018-01-25 22:42:51 UTC; David Zumbach
+Packaged: 2018-01-27 00:40:35 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>

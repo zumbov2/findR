@@ -12,7 +12,7 @@ findPDF(path = ".", pattern = "hello world", lowercase = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{lowercase}{a logical value. If \code{TRUE}, all PDF file content is converted to lower case.}
+\item{lowercase}{a logical value. If \code{TRUE}, PDF file content is converted to lowercase before pattern matching.}
 
 \item{copy}{a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.}
 
@@ -26,10 +26,18 @@ that matches a specific pattern. Hits can be copied to a new folder.
 }
 \examples{
 \dontrun{
-# Find all PDF files in folder 'my_PDFs' citing R:
-findPDF(path = "my_PDFs", pattern = "R Core Team")
+# Find all of your PDF files containing the word TensorFlow
+findRmd(path = "my_files", pattern = "TensorFlow")
 
-# Copy PDF files with matching content to a new folder:
-findPDF(path = "my_PDFs", pattern = "R Core Team", copy = T, folder = "my_R_citing_PDFs"))
+# Save the hits to a new folder
+findRmd(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
+}
+\dontshow{
+# Find all PDF files in the package folder that contain the name Hanna
+findPDF(path = system.file(package = "findR"), pattern = "Hanna")
+
+# Find all PDF files in the package folder that contain the name Hanna
+findPDF(path = system.file(package = "findR"), pattern = "Hanna", copy = TRUE, folder = file.path(tempdir(), "r3"))
+list.files(file.path(tempdir(), "r3"))
 }
 }

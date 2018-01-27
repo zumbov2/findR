@@ -5,18 +5,26 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param lowercase a logical value. If \code{TRUE}, all R script content is converted to lower case.
+#' @param lowercase a logical value. If \code{TRUE}, R script content is converted to lowercase before pattern matching.
 #' @param comments a logical value. If \code{FALSE}, comments (lines starting with #) are excluded from pattern matching.
 #' @param copy a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{
-#'# Find all R scripts in folder 'my_Rscripts' containing a ggplot bar chart:
-#'findRscript(path = "my_Rscripts", pattern = "geom_bar")
+#'# Find all of your Rscripts with a ggplot2 bar chart
+#'findRscript(path = "my_files", pattern = "geom_bar")
 #'
-#'# Copy scripts with matching content to a new folder:
-#'findRscript(path = "my_Rscripts", pattern = "geom_bar", copy = T, folder = "my_bar_Rscripts")
+#'# Save the hits to a new folder
+#'findRscript(path = "my_files", pattern = "geom_bar", copy = TRUE, folder = "Rscripts_geom_bar")
+#'}
+#'\dontshow{
+#'# Find all Rscripts in the package folder that use the circlize package
+#'findRscript(path = system.file(package = "findR"), pattern = "circlize")
+#'
+#'# Copy the hits to a new folder
+#'findRscript(path = system.file(package = "findR"), pattern = "circlize", copy = TRUE, folder = file.path(tempdir(), "r1"))
+#'list.files(file.path(tempdir(), "r1"))
 #'}
 #' @export
 
@@ -86,9 +94,20 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, 
     # Messages 1
     message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of R scripts scanned: ", length(fls)))
-    message(paste0("Number of R files with matches: ", length(unique(hits$path_to_file))))
-    message(paste0("Total number of matches: ", nrow(hits)))
-    hits
+
+    if (!is.null(hits)) {
+
+      message(paste0("Number of R scripts with matching content: ", length(unique(hits$path_to_file))))
+      message(paste0("Total number of matches: ", nrow(hits)))
+
+      hits
+
+    } else {
+
+      message("Number of R scripts with matching content: 0")
+      message("Total number of matches: 0")
+
+    }
 
   } else {
 

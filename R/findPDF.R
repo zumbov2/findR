@@ -5,18 +5,26 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param lowercase a logical value. If \code{TRUE}, all PDF file content is converted to lower case.
+#' @param lowercase a logical value. If \code{TRUE}, PDF file content is converted to lowercase before pattern matching.
 #' @param copy a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'\dontrun{
-#'# Find all PDF files in folder 'my_PDFs' citing R:
-#'findPDF(path = "my_PDFs", pattern = "R Core Team")
+#'# Find all of your PDF files containing the word TensorFlow
+#'findRmd(path = "my_files", pattern = "TensorFlow")
 #'
-#'# Copy PDF files with matching content to a new folder:
-#'findPDF(path = "my_PDFs", pattern = "R Core Team", copy = T, folder = "my_R_citing_PDFs"))
+#'# Save the hits to a new folder
+#'findRmd(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
 #'}
+#'\dontshow{
+#' # Find all PDF files in the package folder that contain the name Hanna
+#' findPDF(path = system.file(package = "findR"), pattern = "Hanna")
+#'
+#' # Find all PDF files in the package folder that contain the name Hanna
+#' findPDF(path = system.file(package = "findR"), pattern = "Hanna", copy = TRUE, folder = file.path(tempdir(), "r3"))
+#' list.files(file.path(tempdir(), "r3"))
+#' }
 #' @export
 
 findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findPDF", overwrite = TRUE) {
@@ -76,9 +84,20 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
     # Messages 1
     message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of PDF files scanned: ", length(fls)))
-    message(paste0("Number of PDF files with matches: ", length(unique(hits$path_to_file))))
-    message(paste0("Total number of matches: ", nrow(hits)))
-    hits
+
+    if (!is.null(hits)) {
+
+      message(paste0("Number of PDF files with matching content: ", length(unique(hits$path_to_file))))
+      message(paste0("Total number of matches: ", nrow(hits)))
+
+      hits
+
+    } else {
+
+      message("Number of PDF files with matching content: 0")
+      message("Total number of matches: 0")
+
+    }
 
   } else {
 
@@ -87,4 +106,5 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
     message(paste0("No PDF files found!"))
 
   }
+
 }

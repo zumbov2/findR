@@ -1,0 +1,15 @@
+---
+title: "rmd3"
+author: "test"
+date: "27 Januar 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+ggplot(mtcars, aes(wt, mpg)) + geom_point(colour = "red", size = 3)
+
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point(shape = 21, colour = "black", fill = "white", size = 5, stroke = 5)
+
+```
