@@ -10,30 +10,14 @@
 #' @param folder a character vector, path or name of new folder to copy matching text files to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#'\dontrun{
-#'# Find all of your text files containing the word greenhouse
-#'findtxt(path = "my_files", pattern = "greenhouse")
-#'
-#'# Save the hits to a new folder
-#'findtxt(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
-#'}
-#'\dontshow{
-#' # Find all text files in the package folder that contain the name Einstein
-#' findtxt(path = system.file(package = "findR"), pattern = "einstein")
-#'
-#' # Copy the hits to a new folder
-#' findtxt(path = system.file(package = "findR"), pattern = "einstein", copy = TRUE, folder = file.path(tempdir(), "r4"))
-#' list.files(file.path(tempdir(), "r4"))
-#' }
+#'# Find all text files in the package folder that contain the name Einstein
+#'findtxt(path = system.file(package = "findR"), pattern = "einstein")
 #' @export
 
 findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findtxt", overwrite = TRUE) {
 
-  # Get all subdirectories
-  drs <- list.dirs(path = path)
-
   # Get all R Markdown files in subdirectories
-  fls <- list.files(drs, pattern = "\\.txt$|\\.TXT$", full.names = T)
+  fls <- list.files(path, pattern = "\\.txt$", full.names = T, recursive = T, ignore.case = T)
 
   if (length(fls) > 0) {
 
@@ -83,7 +67,6 @@ findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
     }
 
     # Messages 1
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of text files scanned: ", length(fls)))
 
     if (!is.null(hits)) {
@@ -103,7 +86,6 @@ findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
   } else {
 
     # Messages 2
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("No text files found!"))
 
   }

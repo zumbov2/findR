@@ -10,30 +10,14 @@
 #' @param folder a character vector, path or name of new folder to copy matching R Markdown files to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#'\dontrun{
-#'# Find all of your R Markdown files with a ggplot2 scatterplot
-#'findRmd(path = "my_files", pattern = "geom_point")
-#'
-#'# Save the hits to a new folder
-#'findRmd(path = "my_files", pattern = "geom_point", copy = TRUE, folder = "Rmd_scatterplot")
-#'}
-#'\dontshow{
 #'# Find all R Markdown files in the package folder that contain a ggplot bar chart
 #'findRmd(path = system.file(package = "findR"), pattern = "geom_bar")
-#'
-#'# Copy the hits to a new folder
-#'findRmd(path = system.file(package = "findR"), pattern = "geom_bar", copy = TRUE, folder = file.path(tempdir(), "r2"))
-#'list.files(file.path(tempdir(), "r2"))
-#'}
 #' @export
 
 findRmd <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findRmd", overwrite = TRUE) {
 
-  # Get all subdirectories
-  drs <- list.dirs(path = path)
-
   # Get all R Markdown files in subdirectories
-  fls <- list.files(drs, pattern = "\\.Rmd$|\\.RMD$|\\.rmd$|\\.Rmarkdown$", full.names = T)
+  fls <- list.files(path, pattern = "\\.rmd$", full.names = T, recursive = T, ignore.case = T)
 
   if (length(fls) > 0) {
 
@@ -83,7 +67,6 @@ findRmd <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
     }
 
     # Messages 1
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of R markdown files scanned: ", length(fls)))
 
     if (!is.null(hits)) {
@@ -103,7 +86,6 @@ findRmd <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
   } else {
 
     # Messages 2
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("No R markdown files found!"))
 
   }

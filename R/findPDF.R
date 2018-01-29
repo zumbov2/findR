@@ -10,30 +10,14 @@
 #' @param folder a character vector, path or name of new folder to copy matching PDF files scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#'\dontrun{
-#'# Find all of your PDF files containing the word TensorFlow
-#'findPDF(path = "my_files", pattern = "TensorFlow")
-#'
-#'# Save the hits to a new folder
-#'findPDF(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
-#'}
-#'\dontshow{
-#' # Find all PDF files in the package folder that contain the name Hanna
-#' findPDF(path = system.file(package = "findR"), pattern = "Hanna")
-#'
-#' # Find all PDF files in the package folder that contain the name Hanna
-#' findPDF(path = system.file(package = "findR"), pattern = "Hanna", copy = TRUE, folder = file.path(tempdir(), "r3"))
-#' list.files(file.path(tempdir(), "r3"))
-#' }
+#'# Find all PDF files in the package folder that contain the name Hanna
+#'findPDF(path = system.file(package = "findR"), pattern = "Hanna")
 #' @export
 
 findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findPDF", overwrite = TRUE) {
 
-  # Get all subdirectories
-  drs <- list.dirs(path = path)
-
   # Get all PDF files in subdirectories
-  fls <- list.files(drs, pattern = "\\.pdf|\\.PDF", full.names = T)
+  fls <- list.files(path, pattern = "\\.pdf", full.names = T, recursive = T, ignore.case = T)
 
   if (length(fls) > 0) {
 
@@ -54,7 +38,7 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
 
       if (length(grep(pattern, a)) > 0) {
 
-        path_to_file <- fls[i]
+        path_to_file <- file.path(fls[i])
         page <- which(grepl(pattern, a))
         hit <- cbind.data.frame(path_to_file, page)
         hits <- rbind.data.frame(hits, hit)
@@ -82,7 +66,6 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
     }
 
     # Messages 1
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of PDF files scanned: ", length(fls)))
 
     if (!is.null(hits)) {
@@ -102,7 +85,6 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
   } else {
 
     # Messages 2
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("No PDF files found!"))
 
   }

@@ -28,19 +28,6 @@ findRscript(path = ".", pattern = "hello world", lowercase = FALSE,
     a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
-\dontrun{
-# Find all of your R scripts containing a ggplot2 bar chart
-findRscript(path = "my_files", pattern = "geom_bar")
-
-# Save the hits to a new folder
-findRscript(path = "my_files", pattern = "geom_bar", copy = TRUE, folder = "Rscripts_geom_bar")
-}
-\dontshow{
 # Find all Rscripts in the package folder that use the circlize package
 findRscript(path = system.file(package = "findR"), pattern = "circlize")
-
-# Copy the hits to a new folder
-findRscript(path = system.file(package = "findR"), pattern = "circlize", copy = TRUE, folder = file.path(tempdir(), "r1"))
-list.files(file.path(tempdir(), "r1"))
-}
 }

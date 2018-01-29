@@ -25,19 +25,6 @@ findtxt(path = ".", pattern = "hello world", lowercase = FALSE,
     a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
-\dontrun{
-# Find all of your text files containing the word greenhouse
-findtxt(path = "my_files", pattern = "greenhouse")
-
-# Save the hits to a new folder
-findtxt(path = "my_files", pattern = "greenhouse", copy = TRUE, folder = "txt_greenhouse")
-}
-\dontshow{
 # Find all text files in the package folder that contain the name Einstein
 findtxt(path = system.file(package = "findR"), pattern = "einstein")
-
-# Copy the hits to a new folder
-findtxt(path = system.file(package = "findR"), pattern = "einstein", copy = TRUE, folder = file.path(tempdir(), "r4"))
-list.files(file.path(tempdir(), "r4"))
-}
 }

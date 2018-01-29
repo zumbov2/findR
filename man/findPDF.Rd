@@ -25,19 +25,6 @@ findPDF(path = ".", pattern = "hello world", lowercase = FALSE,
     a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
-\dontrun{
-# Find all of your PDF files containing the word TensorFlow
-findPDF(path = "my_files", pattern = "TensorFlow")
-
-# Save the hits to a new folder
-findPDF(path = "my_files", pattern = "TensorFlow", copy = TRUE, folder = "pdf_tensorflow")
-}
-\dontshow{
 # Find all PDF files in the package folder that contain the name Hanna
 findPDF(path = system.file(package = "findR"), pattern = "Hanna")
-
-# Find all PDF files in the package folder that contain the name Hanna
-findPDF(path = system.file(package = "findR"), pattern = "Hanna", copy = TRUE, folder = file.path(tempdir(), "r3"))
-list.files(file.path(tempdir(), "r3"))
-}
 }

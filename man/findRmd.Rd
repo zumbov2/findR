@@ -25,19 +25,6 @@ findRmd(path = ".", pattern = "hello world", lowercase = FALSE,
     a specific pattern.  Hits can be copied to a new folder.
 }
 \examples{
-\dontrun{
-# Find all of your R Markdown files with a ggplot2 scatterplot
-findRmd(path = "my_files", pattern = "geom_point")
-
-# Save the hits to a new folder
-findRmd(path = "my_files", pattern = "geom_point", copy = TRUE, folder = "Rmd_scatterplot")
-}
-\dontshow{
 # Find all R Markdown files in the package folder that contain a ggplot bar chart
 findRmd(path = system.file(package = "findR"), pattern = "geom_bar")
-
-# Copy the hits to a new folder
-findRmd(path = system.file(package = "findR"), pattern = "geom_bar", copy = TRUE, folder = file.path(tempdir(), "r2"))
-list.files(file.path(tempdir(), "r2"))
-}
 }

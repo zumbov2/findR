@@ -11,30 +11,14 @@
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
-#'\dontrun{
-#'# Find all of your R scripts containing a ggplot2 bar chart
-#'findRscript(path = "my_files", pattern = "geom_bar")
-#'
-#'# Save the hits to a new folder
-#'findRscript(path = "my_files", pattern = "geom_bar", copy = TRUE, folder = "Rscripts_geom_bar")
-#'}
-#'\dontshow{
 #'# Find all Rscripts in the package folder that use the circlize package
 #'findRscript(path = system.file(package = "findR"), pattern = "circlize")
-#'
-#'# Copy the hits to a new folder
-#'findRscript(path = system.file(package = "findR"), pattern = "circlize", copy = TRUE, folder = file.path(tempdir(), "r1"))
-#'list.files(file.path(tempdir(), "r1"))
-#'}
 #' @export
 
 findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, comments = TRUE, copy = FALSE, folder = "findRscript", overwrite = TRUE) {
 
-  # Get all subdirectories
-  drs <- list.dirs(path = path)
-
   # Get all R scripts in subdirectories
-  fls <- list.files(drs, pattern = "\\.r$|\\.R$", full.names = T)
+  fls <- list.files(path, pattern = "\\.r$", full.names = T, recursive = T, ignore.case = T)
 
   if (length(fls) > 0) {
 
@@ -92,7 +76,6 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, 
     }
 
     # Messages 1
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("Number of R scripts scanned: ", length(fls)))
 
     if (!is.null(hits)) {
@@ -112,7 +95,6 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, 
   } else {
 
     # Messages 2
-    message(paste0("Number of directories scanned: ", length(drs)))
     message(paste0("No R scripts found!"))
 
   }
