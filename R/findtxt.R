@@ -3,8 +3,8 @@
 #' \code{findtxt} scans all directories and subdirectories of a given path for text files (.txt) containing
 #'     a specific pattern.  Hits can be copied to a new folder.
 #'
-#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
+#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching text files are copied to \code{folder}.
@@ -12,11 +12,16 @@
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'# Find all text files in the package folder that contain the name Einstein
-#'findtxt(path = system.file(package = "findR"), pattern = "Einstein", case.sensitive = FALSE)
+#'findtxt(path = system.file(package = "findR"), pattern = "Einstein")
+#'
+#'# Save results in a data frame and show hits
+#'dt <- findtxt(path = system.file(package = "findR"), pattern = "Einstein", show.results = TRUE)
+#'dt
+#'
 #' @export
 
-findtxt <- function(path = ".",
-                    pattern = "Hello World",
+findtxt <- function(pattern = "Hello World",
+                    path = ".",
                     case.sensitive = TRUE,
                     show.results = TRUE,
                     copy = FALSE,

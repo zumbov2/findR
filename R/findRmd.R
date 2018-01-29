@@ -3,8 +3,8 @@
 #' \code{findRmd} scans all directories and subdirectories of a given path for R Markdown files (.Rmd) containing
 #'     a specific pattern.  Hits can be copied to a new folder.
 #'
-#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
+#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching R Markdown files are copied to \code{folder}.
@@ -13,6 +13,11 @@
 #' @examples
 #'# Find all R Markdown files in the package folder that contain a ggplot bar chart
 #'findRmd(path = system.file(package = "findR"), pattern = "geom_bar")
+#'
+#'# Save results in a data frame and show hits
+#'dt <- findRmd(path = system.file(package = "findR"), pattern = "geom_bar", show.results = TRUE)
+#'dt
+#'
 #' @export
 
 findRmd <- function(path = ".",

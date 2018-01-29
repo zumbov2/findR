@@ -30,4 +30,9 @@ findRmd(path = ".", pattern = "Hello World", case.sensitive = TRUE,
 \examples{
 # Find all R Markdown files in the package folder that contain a ggplot bar chart
 findRmd(path = system.file(package = "findR"), pattern = "geom_bar")
+
+# Save results in a data frame and show hits
+dt <- findRmd(path = system.file(package = "findR"), pattern = "geom_bar", show.results = TRUE)
+dt
+
 }

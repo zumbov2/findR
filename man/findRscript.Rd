@@ -4,14 +4,14 @@
 \alias{findRscript}
 \title{Find R scripts by content with pattern matching}
 \usage{
-findRscript(path = ".", pattern = "Hello World", case.sensitive = TRUE,
+findRscript(pattern = "Hello World", path = ".", case.sensitive = TRUE,
   comments = TRUE, show.results = TRUE, copy = FALSE,
   folder = "findRscript", overwrite = TRUE)
 }
 \arguments{
-\item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
-
 \item{pattern}{a pattern (regular expression) to search for.}
+
+\item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
 
 \item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
@@ -32,4 +32,9 @@ findRscript(path = ".", pattern = "Hello World", case.sensitive = TRUE,
 \examples{
 # Find all Rscripts in the package folder that use the circlize package
 findRscript(path = system.file(package = "findR"), pattern = "circlize")
+
+# Save results in a data frame and show hits
+dt <- findRscript(path = system.file(package = "findR"), pattern = "circlize", show.results = TRUE)
+dt
+
 }

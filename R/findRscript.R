@@ -3,8 +3,8 @@
 #' \code{findRscript} scans all directories and subdirectories of a given path for R scripts (.R) containing
 #'     a specific pattern.  Hits can be copied to a new folder.
 #'
-#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
+#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param comments a logical value. If \code{TRUE}, comments (lines starting with #) are included in the pattern-matching procedure.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
@@ -14,10 +14,15 @@
 #' @examples
 #'# Find all Rscripts in the package folder that use the circlize package
 #'findRscript(path = system.file(package = "findR"), pattern = "circlize")
+#'
+#'# Save results in a data frame and show hits
+#'dt <- findRscript(path = system.file(package = "findR"), pattern = "circlize", show.results = TRUE)
+#'dt
+#'
 #' @export
 
-findRscript <- function(path = ".",
-                        pattern = "Hello World",
+findRscript <- function(pattern = "Hello World",
+                        path = ".",
                         case.sensitive = TRUE,
                         comments = TRUE,
                         show.results = TRUE,

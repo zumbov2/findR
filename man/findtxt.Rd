@@ -4,14 +4,14 @@
 \alias{findtxt}
 \title{Find text files by content with pattern matching}
 \usage{
-findtxt(path = ".", pattern = "Hello World", case.sensitive = TRUE,
+findtxt(pattern = "Hello World", path = ".", case.sensitive = TRUE,
   show.results = TRUE, copy = FALSE, folder = "findtxt",
   overwrite = TRUE)
 }
 \arguments{
-\item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
-
 \item{pattern}{a pattern (regular expression) to search for.}
+
+\item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
 
 \item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
@@ -29,5 +29,10 @@ findtxt(path = ".", pattern = "Hello World", case.sensitive = TRUE,
 }
 \examples{
 # Find all text files in the package folder that contain the name Einstein
-findtxt(path = system.file(package = "findR"), pattern = "Einstein", case.sensitive = FALSE)
+findtxt(path = system.file(package = "findR"), pattern = "Einstein")
+
+# Save results in a data frame and show hits
+dt <- findtxt(path = system.file(package = "findR"), pattern = "Einstein", show.results = TRUE)
+dt
+
 }

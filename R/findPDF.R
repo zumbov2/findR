@@ -3,8 +3,8 @@
 #' \code{findPDF} scans all directories and subdirectories of a given path for PDF files (.pdf) containing
 #'     a specific pattern.  Hits can be copied to a new folder.
 #'
-#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
+#' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.
@@ -12,7 +12,12 @@
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'# Find all PDF files in the package folder that contain the name Hanna
-#'findPDF(path = system.file(package = "findR"), pattern = "Hanna", case.sensitive = FALSE)
+#'findPDF(path = system.file(package = "findR"), pattern = "Hanna")
+#'
+#'# Save results in a data frame and show hits
+#'dt <- findPDF(path = system.file(package = "findR"), pattern = "Hanna", show.results = TRUE)
+#'dt
+#'
 #' @export
 
 findPDF <- function(path = ".",
