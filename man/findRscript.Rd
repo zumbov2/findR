@@ -4,7 +4,7 @@
 \alias{findRscript}
 \title{Find R scripts by content with pattern matching}
 \usage{
-findRscript(path = ".", pattern = "Hello World", ignore.case = FALSE,
+findRscript(path = ".", pattern = "Hello World", case.sensitive = TRUE,
   comments = TRUE, show.results = TRUE, copy = FALSE,
   folder = "findRscript", overwrite = TRUE)
 }
@@ -13,7 +13,7 @@ findRscript(path = ".", pattern = "Hello World", ignore.case = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{ignore.case}{a logical value. If \code{TRUE}, pattern-matching is case-insensitive.}
+\item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
 \item{comments}{a logical value. If \code{TRUE}, comments (lines starting with #) are included in the pattern-matching procedure.}
 

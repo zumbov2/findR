@@ -4,7 +4,7 @@
 \alias{findRmd}
 \title{Find R Markdown files by content with pattern matching}
 \usage{
-findRmd(path = ".", pattern = "Hello World", ignore.case = FALSE,
+findRmd(path = ".", pattern = "Hello World", case.sensitive = TRUE,
   show.results = TRUE, copy = FALSE, folder = "findRmd",
   overwrite = TRUE)
 }
@@ -13,7 +13,7 @@ findRmd(path = ".", pattern = "Hello World", ignore.case = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{ignore.case}{a logical value. If \code{TRUE}, pattern-matching is case-insensitive.}
+\item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
 \item{show.results}{a logical value. If \code{TRUE}, results are printed after completion.}
 

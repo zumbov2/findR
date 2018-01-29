@@ -5,7 +5,7 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching R Markdown files are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching R Markdown files to.
@@ -17,7 +17,7 @@
 
 findRmd <- function(path = ".",
                     pattern = "Hello World",
-                    ignore.case = FALSE,
+                    case.sensitive = TRUE,
                     show.results = TRUE,
                     copy = FALSE,
                     folder = "findRmd",
@@ -33,7 +33,7 @@ findRmd <- function(path = ".",
 
     for (i in 1:length(fls)) {
 
-      if (ignore.case == TRUE) {
+      if (case.sensitive == FALSE) {
 
         pattern <- tolower(pattern)
         a <- tolower(readLines(fls[i], warn = F))

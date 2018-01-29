@@ -4,7 +4,7 @@
 \alias{findPDF}
 \title{Find PDF files by content with pattern matching}
 \usage{
-findPDF(path = ".", pattern = "Hello World", ignore.case = FALSE,
+findPDF(path = ".", pattern = "Hello World", case.sensitive = TRUE,
   show.results = TRUE, copy = FALSE, folder = "findPDF",
   overwrite = TRUE)
 }
@@ -13,7 +13,7 @@ findPDF(path = ".", pattern = "Hello World", ignore.case = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{ignore.case}{a logical value. If \code{TRUE}, pattern-matching is case-insensitive.}
+\item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
 \item{show.results}{a logical value. If \code{TRUE}, results are printed after completion.}
 
@@ -29,5 +29,5 @@ findPDF(path = ".", pattern = "Hello World", ignore.case = FALSE,
 }
 \examples{
 # Find all PDF files in the package folder that contain the name Hanna
-findPDF(path = system.file(package = "findR"), pattern = "Hanna", ignore.case = TRUE)
+findPDF(path = system.file(package = "findR"), pattern = "Hanna", case.sensitive = FALSE)
 }

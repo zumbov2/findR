@@ -5,19 +5,19 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching PDF files scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'# Find all PDF files in the package folder that contain the name Hanna
-#'findPDF(path = system.file(package = "findR"), pattern = "Hanna", ignore.case = TRUE)
+#'findPDF(path = system.file(package = "findR"), pattern = "Hanna", case.sensitive = FALSE)
 #' @export
 
 findPDF <- function(path = ".",
                     pattern = "Hello World",
-                    ignore.case = FALSE,
+                    case.sensitive = TRUE,
                     show.results = TRUE,
                     copy = FALSE,
                     folder = "findPDF",
@@ -33,7 +33,7 @@ findPDF <- function(path = ".",
 
     for (i in 1:length(fls)) {
 
-      if (ignore.case == TRUE) {
+      if (case.sensitive == FALSE) {
 
         pattern <- tolower(pattern)
         a <- tolower(readLines(fls[i], warn = F))

@@ -5,7 +5,7 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param case.sensitive a logical value. If \code{TRUE}, pattern-matching is case-sensitive.
 #' @param comments a logical value. If \code{TRUE}, comments (lines starting with #) are included in the pattern-matching procedure.
 #' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.
@@ -18,7 +18,7 @@
 
 findRscript <- function(path = ".",
                         pattern = "Hello World",
-                        ignore.case = FALSE,
+                        case.sensitive = TRUE,
                         comments = TRUE,
                         show.results = TRUE,
                         copy = FALSE,
@@ -35,7 +35,7 @@ findRscript <- function(path = ".",
 
     for (i in 1:length(fls)) {
 
-      if (ignore.case == TRUE) {
+      if (case.sensitive == FALSE) {
 
         pattern <- tolower(pattern)
         a <- tolower(readLines(fls[i], warn = F))

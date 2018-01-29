@@ -4,7 +4,7 @@
 \alias{findtxt}
 \title{Find text files by content with pattern matching}
 \usage{
-findtxt(path = ".", pattern = "Hello World", ignore.case = FALSE,
+findtxt(path = ".", pattern = "Hello World", case.sensitive = TRUE,
   show.results = TRUE, copy = FALSE, folder = "findtxt",
   overwrite = TRUE)
 }
@@ -13,7 +13,7 @@ findtxt(path = ".", pattern = "Hello World", ignore.case = FALSE,
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{ignore.case}{a logical value. If \code{TRUE}, pattern-matching is case-insensitive.}
+\item{case.sensitive}{a logical value. If \code{TRUE}, pattern-matching is case-sensitive.}
 
 \item{show.results}{a logical value. If \code{TRUE}, results are printed after completion.}
 
@@ -29,5 +29,5 @@ findtxt(path = ".", pattern = "Hello World", ignore.case = FALSE,
 }
 \examples{
 # Find all text files in the package folder that contain the name Einstein
-findtxt(path = system.file(package = "findR"), pattern = "Einstein", ignore.case = TRUE)
+findtxt(path = system.file(package = "findR"), pattern = "Einstein", case.sensitive = FALSE)
 }
