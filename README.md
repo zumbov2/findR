@@ -12,14 +12,19 @@ Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/ci
 
 ```
 library(findR)
-findRscript(pattern = "circlize", comments = F, copy = T, folder = "myChordDiagrams")
+findRscript(path = "C:/Users/David Zumbach/Desktop/R", 
+            pattern = "circlize", 
+            show.results = F,
+            copy = T,
+            folder = "myChordScripts")
 ```
-After roughly 20 seconds:
+[12 seconds later](https://www.youtube.com/watch?v=oeUcLaD9pR4):
 
-![](https://github.com/zumbov2/findR/blob/master/img/report1.png)
-
-The new folder looks like this:
-
+```
+Number of R scripts scanned: 1155
+Number of R scripts with matching content: 20
+Total number of matches: 40
+```
 ![](https://github.com/zumbov2/findR/blob/master/img/folder.png)
 
 ## Example `findPDF`
