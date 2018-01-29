@@ -5,8 +5,9 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param lowercase a logical value. If \code{TRUE}, R script content is converted to lowercase before pattern matching.
-#' @param comments a logical value. If \code{FALSE}, comments (lines starting with #) are excluded from pattern matching.
+#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param comments a logical value. If \code{TRUE}, comments (lines starting with #) are included in the pattern-matching procedure.
+#' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching R scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
@@ -15,7 +16,14 @@
 #'findRscript(path = system.file(package = "findR"), pattern = "circlize")
 #' @export
 
-findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, comments = TRUE, copy = FALSE, folder = "findRscript", overwrite = TRUE) {
+findRscript <- function(path = ".",
+                        pattern = "Hello World",
+                        ignore.case = FALSE,
+                        comments = TRUE,
+                        show.results = TRUE,
+                        copy = FALSE,
+                        folder = "findRscript",
+                        overwrite = TRUE) {
 
   # Get all R scripts in subdirectories
   fls <- list.files(path, pattern = "\\.r$", full.names = T, recursive = T, ignore.case = T)
@@ -27,8 +35,9 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, 
 
     for (i in 1:length(fls)) {
 
-      if (lowercase == TRUE) {
+      if (ignore.case == TRUE) {
 
+        pattern <- tolower(pattern)
         a <- tolower(readLines(fls[i], warn = F))
 
       } else {
@@ -83,7 +92,9 @@ findRscript <- function(path = ".", pattern = "hello world", lowercase = FALSE, 
       message(paste0("Number of R scripts with matching content: ", length(unique(hits$path_to_file))))
       message(paste0("Total number of matches: ", nrow(hits)))
 
-      hits
+      # Print Results
+      if (show.results == TRUE) hits
+
 
     } else {
 

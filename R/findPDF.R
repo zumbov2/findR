@@ -5,16 +5,23 @@
 #'
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
 #' @param pattern a pattern (regular expression) to search for.
-#' @param lowercase a logical value. If \code{TRUE}, PDF file content is converted to lowercase before pattern matching.
+#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching PDF files scripts to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'# Find all PDF files in the package folder that contain the name Hanna
-#'findPDF(path = system.file(package = "findR"), pattern = "Hanna")
+#'findPDF(path = system.file(package = "findR"), pattern = "Hanna", ignore.case = TRUE)
 #' @export
 
-findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findPDF", overwrite = TRUE) {
+findPDF <- function(path = ".",
+                    pattern = "Hello World",
+                    ignore.case = FALSE,
+                    show.results = TRUE,
+                    copy = FALSE,
+                    folder = "findPDF",
+                    overwrite = TRUE) {
 
   # Get all PDF files in subdirectories
   fls <- list.files(path, pattern = "\\.pdf", full.names = T, recursive = T, ignore.case = T)
@@ -26,13 +33,14 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
 
     for (i in 1:length(fls)) {
 
-      if (lowercase == TRUE) {
+      if (ignore.case == TRUE) {
 
-        a <- try(suppressMessages(tolower(pdftools::pdf_text(fls[i]))), silent = TRUE)
+        pattern <- tolower(pattern)
+        a <- tolower(readLines(fls[i], warn = F))
 
       } else {
 
-        a <- try(suppressMessages(pdftools::pdf_text(fls[i])), silent = TRUE)
+        a <- readLines(fls[i], warn = F)
 
       }
 
@@ -73,7 +81,8 @@ findPDF <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
       message(paste0("Number of PDF files with matching content: ", length(unique(hits$path_to_file))))
       message(paste0("Total number of matches: ", nrow(hits)))
 
-      hits
+      # Print Results
+      if (show.results == TRUE) hits
 
     } else {
 

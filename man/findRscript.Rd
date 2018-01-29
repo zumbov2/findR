@@ -4,18 +4,20 @@
 \alias{findRscript}
 \title{Find R scripts by content with pattern matching}
 \usage{
-findRscript(path = ".", pattern = "hello world", lowercase = FALSE,
-  comments = TRUE, copy = FALSE, folder = "findRscript",
-  overwrite = TRUE)
+findRscript(path = ".", pattern = "Hello World", ignore.case = FALSE,
+  comments = TRUE, show.results = TRUE, copy = FALSE,
+  folder = "findRscript", overwrite = TRUE)
 }
 \arguments{
 \item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
 
 \item{pattern}{a pattern (regular expression) to search for.}
 
-\item{lowercase}{a logical value. If \code{TRUE}, R script content is converted to lowercase before pattern matching.}
+\item{ignore.case}{a logical value. If \code{TRUE}, pattern-matching is case-insensitive.}
 
-\item{comments}{a logical value. If \code{FALSE}, comments (lines starting with #) are excluded from pattern matching.}
+\item{comments}{a logical value. If \code{TRUE}, comments (lines starting with #) are included in the pattern-matching procedure.}
+
+\item{show.results}{a logical value. If \code{TRUE}, results are printed after completion.}
 
 \item{copy}{a logical value. If \code{TRUE}, all matching R scripts are copied to \code{folder}.}
 

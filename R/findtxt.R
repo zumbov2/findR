@@ -3,18 +3,25 @@
 #' \code{findtxt} scans all directories and subdirectories of a given path for text files (.txt) containing
 #'     a specific pattern.  Hits can be copied to a new folder.
 #'
-#' @param pattern a pattern (regular expression) to search for.
-#' @param lowercase a logical value. If \code{TRUE}, text file content is converted to lowercase before pattern matching.
 #' @param path a character vector, path to be scanned. The default corresponds to the working directory, getwd().
+#' @param pattern a pattern (regular expression) to search for.
+#' @param ignore.case a logical value. If \code{TRUE}, pattern-matching is case-insensitive.
+#' @param show.results a logical value. If \code{TRUE}, results are printed after completion.
 #' @param copy a logical value. If \code{TRUE}, all matching text files are copied to \code{folder}.
 #' @param folder a character vector, path or name of new folder to copy matching text files to.
 #' @param overwrite a logical value. If \code{TRUE}, existing destination files are overwritten.
 #' @examples
 #'# Find all text files in the package folder that contain the name Einstein
-#'findtxt(path = system.file(package = "findR"), pattern = "einstein")
+#'findtxt(path = system.file(package = "findR"), pattern = "Einstein", ignore.case = TRUE)
 #' @export
 
-findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy = FALSE, folder = "findtxt", overwrite = TRUE) {
+findtxt <- function(path = ".",
+                    pattern = "Hello World",
+                    ignore.case = FALSE,
+                    show.results = TRUE,
+                    copy = FALSE,
+                    folder = "findtxt",
+                    overwrite = TRUE) {
 
   # Get all R Markdown files in subdirectories
   fls <- list.files(path, pattern = "\\.txt$", full.names = T, recursive = T, ignore.case = T)
@@ -26,8 +33,9 @@ findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
 
     for (i in 1:length(fls)) {
 
-      if (lowercase == TRUE) {
+      if (ignore.case == TRUE) {
 
+        pattern <- tolower(pattern)
         a <- tolower(readLines(fls[i], warn = F))
 
       } else {
@@ -74,7 +82,8 @@ findtxt <- function(path = ".", pattern = "hello world", lowercase = FALSE, copy
       message(paste0("Number of text files with matching content: ", length(unique(hits$path_to_file))))
       message(paste0("Total number of matches: ", nrow(hits)))
 
-      hits
+      # Print Results
+      if (show.results == TRUE) hits
 
     } else {
 
