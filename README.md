@@ -1,8 +1,15 @@
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/findR)](https://cran.r-project.org/package=findR)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![cranlogs](https://cranlogs.r-pkg.org/badges/findR?color=brightgreen)
 # findR
 The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan all directories and subdirectories of a given path for R scripts, R Markdown, PDF and text files with content that matches a specific pattern. The hits can be copied to a folder.
 
 ## Installation
+The version 0.1.0 is on [CRAN](https://cran.r-project.org/web/packages/findR/index.html), and you can install it by:
+```
+install.packages("findR")
+```
+For regularly updated version (latest: 0.1.1) install from GitHub:
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/findR")
