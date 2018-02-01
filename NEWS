@@ -4,3 +4,9 @@ findR 0.1.0
 NEW FEATURES
 
 * First version of the package.
+
+
+findR 0.1.1
+-----------------
+
+* debugged findPDF

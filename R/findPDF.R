@@ -41,11 +41,11 @@ findPDF <- function(path = ".",
       if (case.sensitive == FALSE) {
 
         pattern <- tolower(pattern)
-        a <- tolower(readLines(fls[i], warn = F))
+        a <- try(suppressMessages(tolower(pdftools::pdf_text(fls[i]))), silent = TRUE)
 
       } else {
 
-        a <- readLines(fls[i], warn = F)
+        a <- try(suppressMessages(pdftools::pdf_text(fls[i])), silent = TRUE)
 
       }
 
