@@ -19,7 +19,7 @@ findPDF(path = ".", pattern = "Hello World", case.sensitive = TRUE,
 
 \item{copy}{a logical value. If \code{TRUE}, all matching PDF files are copied to \code{folder}.}
 
-\item{folder}{a character vector, path or name of new folder to copy matching PDF files scripts to.}
+\item{folder}{a character vector, path or name of new folder to copy matching PDF files to.}
 
 \item{overwrite}{a logical value. If \code{TRUE}, existing destination files are overwritten.}
 }

@@ -2,7 +2,7 @@ Package: findR
 Type: Package
 Title: Find R Scripts, R Markdown, PDF and Text Files by Content with
         Pattern Matching
-Version: 0.1.1
+Version: 0.2.0
 Authors@R: person("David", "Zumbach", role = c("aut", "cre"), email = "david.zumbach@gfzb.ch")
 Description: Scans all directories and subdirectories of a path for R scripts, R Markdown, PDF or
     text files containing a specific pattern.  Hits can be copied to a new folder.
@@ -13,6 +13,6 @@ RoxygenNote: 6.0.1
 Imports: pdftools
 BugReports: https://github.com/zumbov2/findR/issues
 NeedsCompilation: no
-Packaged: 2018-02-01 00:36:39 UTC; David Zumbach
+Packaged: 2018-02-16 17:03:24 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>

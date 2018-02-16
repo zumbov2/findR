@@ -1,12 +1,15 @@
-findR 0.1.0
------------------
+findR 0.2.0
+-----------
 
-NEW FEATURES
-
-* First version of the package.
-
-
-findR 0.1.1
------------------
-
+* new function: reminder()
 * debugged findPDF
+
+
+findR 0.1.0
+-----------
+
+* first version of the package
+
+
+
+
