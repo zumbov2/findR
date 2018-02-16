@@ -84,14 +84,16 @@ if (stepwise == TRUE) {
             if (start < 1) start <- 1
             if (stop > length(a)) stop <- length(a)
 
-            # Example
-            c <- ""
+            # Print reminder
+            c <- NULL
 
             for (k in start:stop) {
 
-                c <- cat(paste(c, a[k], sep = "\n"))
+              c <- c(c, a[k])
 
             }
+
+            cat(c, sep = "\n")
 
             # Prompt
             while (!x %in% c("y", "n")) x <- readline("Show next example? (y/n): ")
@@ -158,14 +160,16 @@ if (stepwise == TRUE) {
           if (start < 1) start <- 1
           if (stop > length(a)) stop <- length(a)
 
-          # Example
-          c <- ""
+          # Print reminder
+          c <- NULL
 
           for (k in start:stop) {
 
-            c <- cat(paste(c, a[k], sep = "\n"))
+            c <- paste(c, a[k], sep = "\n")
 
           }
+
+          cat(c, sep = "\n")
 
         }
 
