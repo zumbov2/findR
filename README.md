@@ -9,7 +9,7 @@ The version 0.1.0 is on [CRAN](https://cran.r-project.org/web/packages/findR/ind
 ```
 install.packages("findR")
 ```
-For regularly updated version (latest: 0.1.1) install from GitHub:
+For regularly updated version (latest: 0.2.0) install from GitHub:
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/findR")
