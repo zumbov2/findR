@@ -2,7 +2,7 @@
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![cranlogs](http://cranlogs.r-pkg.org/badges/findR?color=brightgreen)](http://cran.rstudio.com/web/packages/findR/index.html)
 # findR
-The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan all directories and subdirectories of a given path for R scripts, R Markdown, PDF and text files with content that matches a specific pattern. Files found can be copied to a folder. `reminder` prints examples for previously used functions directly to the console.
+The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan all directories and subdirectories of a given path for R scripts, R Markdown, PDF and text files with content that matches a specific pattern. Files found can be copied to a folder. `reminder` prints examples directly to the console.
 
 ## Installation
 The version 0.1.0 is on [CRAN](https://cran.r-project.org/web/packages/findR/index.html), and you can install it by:
