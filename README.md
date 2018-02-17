@@ -15,15 +15,28 @@ install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
 ## Example `reminder`
-`reminder` serves as a memory aid for previously used code. Given a specific path, it searches for code examples of a function and prints the hits in the console. 
-
-![](https://github.com/zumbov2/findR/blob/master/img/reminder.mp4)
+`reminder` serves as a memory aid for previously used code. Given a specific path, it searches for code examples of a function. Hits are printed one by one in the console. In the example below, the number of lines displayed after the matching pattern (function) is specified using the argument `after`.
+```
+reminder(func = "chordDiagram", 
+         path = "myDataViz", 
+         after = 7)
+```
+Running the above code results in the following output:
+```
+chordDiagram(data,
+             order = parties,
+             grid.col = colors,
+             col = col_mat,
+             transparency = 0.2,
+             link.rank = rank(data$total),
+             annotationTrack = c("name","grid")
+             )
+```
 
 ## Example `findRscript`
 Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to the main directory of my R projects.
 
 ```
-library(findR)
 findRscript(pattern = "circlize", 
             path = "C:/Users/David Zumbach/Desktop/R", 
             show.results = F,
