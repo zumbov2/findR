@@ -19,8 +19,8 @@ Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/ci
 
 ```
 library(findR)
-findRscript(path = "C:/Users/David Zumbach/Desktop/R", 
-            pattern = "circlize", 
+findRscript(pattern = "circlize", 
+            path = "C:/Users/David Zumbach/Desktop/R", 
             show.results = F,
             copy = T,
             folder = "myChordScripts")
@@ -42,8 +42,10 @@ Too many papers to read?
 `findPDF` helps you focus!
 
 ```
-findPDF(path = "2017/machine_learning", pattern = "tensorflow",
-        lowercase = T, copy = T, folder = "2017/tensorflow")
+findPDF(pattern = "tensorflow",
+        path = "2017/machine_learning", 
+        copy = T, 
+        folder = "2017/tensorflow")
 ```
 15 seconds later and you've got your new reading list:
 
