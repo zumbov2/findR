@@ -21,17 +21,7 @@ reminder(func = "chordDiagram",
          path = "myDataViz", 
          after = 7)
 ```
-Running the above code results in the following output:
-```
-chordDiagram(data,
-             order = parties,
-             grid.col = colors,
-             col = col_mat,
-             transparency = 0.2,
-             link.rank = rank(data$total),
-             annotationTrack = c("name","grid")
-             )
-```
+![](https://github.com/zumbov2/findR/blob/master/img/reminder.gif)
 
 ## Example `findRscript`
 Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to the main directory of my R projects.
