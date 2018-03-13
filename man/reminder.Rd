@@ -5,26 +5,24 @@
 \title{Find reminders on how to use a specific R function}
 \usage{
 reminder(func = "library", path = ".", before = 0, after = 0,
-  rm.blank = FALSE, stepwise = TRUE)
+  stepwise = TRUE)
 }
 \arguments{
 \item{func}{a function to search for.}
 
 \item{path}{a character vector, path to be scanned. The default corresponds to the working directory, getwd().}
 
-\item{before}{integer. The number of lines before the match to print.}
+\item{before}{integer. The number of lines to print before the function.}
 
-\item{after}{integer. The number of lines after the match to print.}
-
-\item{rm.blank}{a logical value. If \code{TRUE}, all blank code lines are removed before printing.}
+\item{after}{integer. The number of lines to print after the function.}
 
 \item{stepwise}{a logical value. If \code{TRUE}, examples are shown one by one using prompt.}
 }
 \description{
 \code{reminder} scans all directories and subdirectories of a given path for files (.R, .Rmd, .txt) containing
-    a specific R function and prints the corresponding code.
+    a specific R function and prints the corresponding lines of code.
 }
 \examples{
 # Find reminder on how to use the function chordDiagram
-reminder(func = "chordDiagram", path = system.file(package = "findR"), after = 7, stepwise = FALSE)
+reminder(func = "chordDiagram", path = system.file(package = "findR"), stepwise = FALSE)
 }

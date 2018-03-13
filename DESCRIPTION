@@ -2,7 +2,7 @@ Package: findR
 Type: Package
 Title: Find Code Snippets, R Scripts, R Markdown, PDF and Text Files
         with Pattern Matching
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("David", "Zumbach", role = c("aut", "cre"), email = "david.zumbach@gfzb.ch")
 Description: Scans all directories and subdirectories of a path for code snippets, R scripts,
     R Markdown, PDF or text files containing a specific pattern.  Files found can be copied to a new folder.
@@ -10,9 +10,9 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Imports: pdftools
+Imports: pdftools, stringr
 BugReports: https://github.com/zumbov2/findR/issues
 NeedsCompilation: no
-Packaged: 2018-02-16 22:45:28 UTC; David Zumbach
+Packaged: 2018-03-13 10:26:06 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>
