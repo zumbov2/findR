@@ -15,7 +15,7 @@ install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
 ## Example `reminder`
-`reminder` serves as a memory aid for previously used code. Given a specific path, it searches for code examples of a function. Hits are by default printed one by one to the console. With `stepwise = F` it's possible to print all the hits at once. The arguments `before` and `after` allow you to print preceding and/or subsequent lines of code.
+`reminder` serves as a memory aid for previously used code. Given a specific path, it searches for code examples of a function. By defaut, hits are displayed one after the other in the console. With `stepwise = F` it is possible to print all hits at once. You can use the arguments `before` and `after` to print preceding and/or subsequent lines of code.
 ```
 reminder(func = "chordDiagram", 
          path = "myProjects")
