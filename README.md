@@ -5,7 +5,7 @@
 The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan all directories and subdirectories of a given path for R scripts, R Markdown, PDF and text files with content that matches a specific pattern. Files found can be copied to a folder. `reminder` prints examples of previously used code directly to the console.
 
 ## Installation
-The version 0.2.0 is on [CRAN](https://cran.r-project.org/web/packages/findR/index.html), and you can install it by:
+The version 0.2.1 is on [CRAN](https://cran.r-project.org/web/packages/findR/index.html), and you can install it by:
 ```
 install.packages("findR")
 ```
