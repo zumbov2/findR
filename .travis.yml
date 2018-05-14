@@ -1,0 +1,7 @@
+language: R
+sudo: apt-get install libpoppler-cpp-dev
+cache: packages
+r:
+- oldrel
+- release
+- devel
