@@ -7,17 +7,17 @@ The `findR` functions `findRscript`, `findRmd`, `findPDF`, and `findtxt` scan al
 
 ## Installation
 The version 0.2.1 is on [CRAN](https://cran.r-project.org/web/packages/findR/index.html), and you can install it by:
-```
+```r
 install.packages("findR")
 ```
 For regularly updated version (latest: 0.2.1) install from GitHub:
-```
+```r
 install.packages("devtools")
 devtools::install_github("zumbov2/findR")
 ```
 ## Example `reminder`
 `reminder` serves as a memory aid for previously used code. Given a specific path, it searches for code examples of a function. By default, hits are displayed one after the other in the console. With `stepwise = F` it is possible to print all hits at once. You can use the arguments `before` and `after` to print preceding and/or subsequent lines of code.
-```
+```r
 reminder(func = "chordDiagram", 
          path = "myProjects")
 ```
@@ -26,7 +26,7 @@ reminder(func = "chordDiagram",
 ## Example `findRscript`
 Hmm, I've used the [circlize package](https://cran.r-project.org/web/packages/circlize/index.html) before, but I can't remember where or when! I apply `findRscript` to the main directory of my R projects.
 
-```
+```r
 findRscript(pattern = "circlize", 
             path = "C:/Users/David Zumbach/Desktop/R", 
             show.results = F,
@@ -35,7 +35,7 @@ findRscript(pattern = "circlize",
 ```
 [12 seconds later](https://www.youtube.com/watch?v=oeUcLaD9pR4):
 
-```
+```r
 Number of R scripts scanned: 1155
 Number of R scripts with matching content: 20
 Total number of matches: 40
@@ -49,7 +49,7 @@ Too many papers to read?
 
 `findPDF` helps you focus!
 
-```
+```r
 findPDF(pattern = "tensorflow",
         path = "2017/machine_learning", 
         copy = T, 
@@ -62,7 +62,7 @@ findPDF(pattern = "tensorflow",
 ## Some gimmickry
 What `ggplot2` type am I? Let's find out with `findR`.
 
-```
+```r
 geom_types <- c("geom_bar", "geom_line", "geom_point", "geom_histogram")
 hits <- vector(mode = "numeric", length = 4)
 
@@ -75,7 +75,7 @@ for (i in 1:length(geom_types)) {
 
 The tension is getting higher.
 
-```
+```r
 library(tidyverse)
 ggstats <- data_frame(type = geom_types, freq = hits)
 
